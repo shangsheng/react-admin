@@ -7,7 +7,7 @@ const state = {
 };
 const getters = {};
 const mutations = {
-    SET_COLLAPS(state){
+    SET_COLLAPSE(state){
         state.collapse = !state.collapse;
         sessionStorage.setItem('collapse',String(state.collapse))
     },
