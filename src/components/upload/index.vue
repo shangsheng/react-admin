@@ -1,0 +1,69 @@
+<template>
+    <el-upload class="avatar-uploader"
+        action="https://up-z2.qiniup.com"
+        :data="uploadData"
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+        :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+</template>
+<script>
+import { GetQiniuToken } from "@/api/common";
+export default {
+    name:"",
+    components:{},
+    data(){
+        return{
+            imagesUrl:"",
+            uploadData:{}
+        };
+    },
+    beforeMount(){
+        this.getQiniuToken();
+    },
+    methods:{
+        getQiniuToken(){
+            //工作中
+            const requestData={
+                ak:"Ef2A2AIv0WHGYfp1BCgPdcdqzK6gqXaVi6IoQztk",
+                sk:"zPSWROJi7SPDe_MqIPoksMY-JVYep9x9l5LHMBMj",
+                buckety:"webncy"
+            };
+            GetQiniuToken(requestData).then(response=>{
+                const data = response.data;
+                if(data.token){
+                    this.uploadData.token = data.token;
+                }
+            });
+        },
+        handleAvatarSuccess(res,file){
+            this.imagesUrl = `http://qff6p8hrd.hn-bkt.clouddn.com/${res.key}`;
+            this.$emit("update:value",this.imagesUrl);
+        },
+        //上传之前
+        beforeAvatarUpload(file){
+            console.log(file);
+            const isJPG = file.type === "image/jpeg";
+            const isLT2M = file.size / 1024 / 1024 < 2;
+            if(!isJPG){
+                this.$message.error("上传头像图片只能是JPG格式！");
+            }
+            if(!isLT2M){
+                this.$message.error("上传头像图片大小不能超过2MB！");
+            }
+            let fileName = file.name;
+            let key = encodeURI(fileName);
+            this.uploadData.key = key;
+            return isJPG && isLT2M;
+        }
+    },
+    props:{
+        imgUrl:{
+            type:String,
+            default:""
+        }
+    }
+}
+</script>

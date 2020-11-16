@@ -181,9 +181,10 @@ export default {
             }).then(()=>{
                 this.rowId = id;
                 let requestData={
-                    url:this.lable_config.url+"Delete",
+                    url:this.table_config.url+"Delete",
                     data:{id}
                 }
+                console.log(requestData)
                 Delete(requestData).then(response=>{
                     this.$message({
                         type:'success',
@@ -193,9 +194,12 @@ export default {
                     //调用子组件的方法
                     this.loadData();
                 }).catch(error=>{
+                    console.log(error)
                     this.rowId = "";
                 })
-            }).catch(()=>{})
+            }).catch(error=>{
+                console.log(error)
+            })
         },
         /**编辑 */
         edit(id,routerName){
