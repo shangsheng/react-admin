@@ -108,6 +108,7 @@ export default {
     created(){
         console.log(this.config)
         console.log(this.table_config.thead)
+        console.log(this.table_config)
     },
     beforeMount(){},
     mounted(){},

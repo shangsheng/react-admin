@@ -34,7 +34,7 @@
                                         {{item.label}}
                                     </router-link>
                                 </el-button>
-                                <el-button v-if="item.element === 'button'" :key="item.key" :type="item.type">
+                                <el-button v-if="item.element === 'button'" :key="item.key" :type="item.type" @click="item.handler">
                                     {{item.label}}
                                 </el-button>
                             </template>
@@ -92,6 +92,9 @@ export default {
         }
     },
     components:{CityArea,KeyWord},
+    created(){
+        console.log(this.formHandler)
+    },
     methods:{
         search() {
         const searchData = {};

@@ -36,7 +36,7 @@ export function Delete(params={}){
 export function GetCarsBrand(data={}){
     return service.request({
         method:"post",
-        url:"/common/getCarsBrand",
+        url:"/common/getCarsBrand/",
         data
     })
 }
@@ -46,7 +46,7 @@ export function GetCarsBrand(data={}){
 export function GetParking(data={}){
     return service.request({
         method:"post",
-        url:"/common/getParking",
+        url:"/common/getParking/",
         data
     })
 }
