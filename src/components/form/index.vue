@@ -5,7 +5,7 @@
             <el-input v-if="item.type === 'Input'" v-model.trim="formData[item.prop]" :placeholder="item.placeholder" :style="{width:item.width}" :disabled="item.disabled"></el-input>
             <!-- Select -->
             <el-select v-if="item.type === 'Select'" :aaaa="item.options" v-model.trim="formData[item.prop]" :placeholder="item.placeholder" :style="{width:item.width}" :disabled="item.disabled">
-                <el-option v-for="selectItem in item.options" :key="selectItem.value || selectItem[item.select_value]" :value="selectItem.value || selectItem[item.select_value]" :label="selectItem.label || selectItem[item.select_value]"></el-option>
+                <el-option v-for="selectItem in item.options" :key="selectItem.value || selectItem[item.select_value]" :value="selectItem.value || selectItem[item.select_value]" :label="selectItem.label || selectItem[item.select_label]"></el-option>
             </el-select>
             <!-- 禁启用 -->
             <el-radio-group v-if="item.type === 'Disabled'" v-model="formData[item.prop]">
@@ -38,12 +38,12 @@
 //省市区
 import CityArea from "@c/common/cityArea";
 //富文本
-import Wangeditor from "@c/common/wangeditor";
+import WangeDitor from "@c/common/wangeditor";
 //upload
 import Upload from "@c/upload";
 export default {
     name:"Form",
-    components:{ CityArea, Wangeditor, Upload},
+    components:{ CityArea, WangeDitor, Upload},
     props:{
         labelWidth:{
             type:String,
@@ -76,6 +76,9 @@ export default {
             wangeditorClear:false // true false
         }
     },
+    mounted(){
+        console.log(this.formItme)
+    },
     methods:{
         /**重置表单 */
         resetForm(){
@@ -86,6 +89,7 @@ export default {
         },
         initFormData(){
             this.formItme.forEach(item=>{
+                console.log(item)
                 //rules规则
                 if(item.required){this.rules(item)}
                 //自定义检验规则
@@ -106,10 +110,12 @@ export default {
     watch:{
         formItme:{
             handler(newValue){
+                console.log(newValue)
                 this.initFormData();
-            }
+            },
+            immediate:true
         },
-        imediate:true
+        
     }
 }
 </script>

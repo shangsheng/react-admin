@@ -27,13 +27,13 @@ const state = {
     //档位
     gear:[
         {label:"手动",value:1},
-        {label:"自动",value:2},,
+        {label:"自动",value:2},
         {label:"人工智能",value:3}
     ],
     //能源类型
     energyType:[
         {label:"电",value:1},
-        {label:"油",value:2},,
+        {label:"油",value:2},
         {label:"混合动力",value:3}
     ],
     //关键字搜索

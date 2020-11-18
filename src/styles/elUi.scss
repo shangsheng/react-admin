@@ -5,7 +5,7 @@
     input::-moz-placeholder { color:#606266; }
     input:-ms-input-placeholder { color:#606266; }
 }
-.el-button--danger a{
+.el-button--danger a,.el-button--success a{
     color: #ffffff;
 }
 .el-button-block{
@@ -99,4 +99,7 @@ li.el-submenu{
     width: 178px;
     height: 178px;
     display: block;
+}
+.el-picker-panel{
+    z-index: 99999 !important;
 }

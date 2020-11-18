@@ -1,6 +1,6 @@
 import service from "../utils/request";
 /**添加 */
-export function CarsAdd(dat={}){
+export function CarAdd(data={}){
     return service.request({
         method:"post",
         url:"/cars/add/",
@@ -27,7 +27,7 @@ export function CarsDelete(data={}){
 export function CarsDetailed(data={}){
     return service.request({
         method:"post",
-        url:"/cars/detailed",
+        url:"/cars/detailed/",
         data
     })
 }

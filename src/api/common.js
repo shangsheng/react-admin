@@ -56,7 +56,7 @@ export function GetParking(data={}){
 export function GetQiniuToken(data={}){
     return service.request({
         method:"post",
-        url:"/uploadImgToken",
+        url:"/uploadImgToken/",
         data
     })
 }

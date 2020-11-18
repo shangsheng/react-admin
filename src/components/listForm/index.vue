@@ -129,8 +129,11 @@ export default {
       },
       initFormData(){
           this.formItme.forEach(item=>{
+              console.log(item)
               //读取下拉选项的数据
-              if(this.type === "Select"){this.selectOption(item)};
+              if(item.type === "Select"){
+                  this.selectOption(item);
+               };
           })
       },
       //字段初始化
@@ -146,6 +149,7 @@ export default {
       //下拉选项
       selectOption(data){
           const options = this.$store.state.config[data.options];
+          console.log(options)
           if(options){
               data.options = options;
           }

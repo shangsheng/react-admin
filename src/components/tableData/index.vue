@@ -175,6 +175,7 @@ export default {
         /**删除 */
         delConfirm(id){
             console.log(id)
+            console.log(this.table_config)
             this.$confirm("确定删除此信息",'提示',{
                 confirmButtonText:'确定',
                 cancelButtonText: '取消',
@@ -182,7 +183,7 @@ export default {
             }).then(()=>{
                 this.rowId = id;
                 let requestData={
-                    url:this.table_config.url+"Delete",
+                    url: this.table_config.url+"Delete",
                     data:{id}
                 }
                 console.log(requestData)

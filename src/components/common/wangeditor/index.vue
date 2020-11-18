@@ -9,7 +9,7 @@ export default {
     components:{},
     mounted(){
         this.editor = new Editor(this.$refs.editorDom);
-        this.editor.customConfig.onchange=html=>{
+        this.editor.config.onchange=html=>{
             this.$emit("update:content",html);
         };
         this.editor.create();//创建富文本实例

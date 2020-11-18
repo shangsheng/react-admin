@@ -16,7 +16,7 @@ export default {
     components:{},
     data(){
         return{
-            imagesUrl:"",
+            imageUrl:"",
             uploadData:{}
         };
     },
@@ -39,7 +39,7 @@ export default {
             });
         },
         handleAvatarSuccess(res,file){
-            this.imagesUrl = `http://qff6p8hrd.hn-bkt.clouddn.com/${res.key}`;
+            this.imageUrl = `http://qff6p8hrd.hn-bkt.clouddn.com/${res.key}`;
             this.$emit("update:value",this.imagesUrl);
         },
         //上传之前

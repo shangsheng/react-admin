@@ -25,7 +25,7 @@ const actions = {
                 let data = response.data
                 console.log(data)
                 content.commit('SET_TOKEN',data.token);
-                content.commit('SET_USERNAE',data.username);
+                content.commit('SET_USERNAME',data.username);
                 setToken(data.token);
                 setUsername(data.username);
                 resolve(response);
